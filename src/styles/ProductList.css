@@ -1,0 +1,50 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 45px;
+}
+
+.ad-add-product-container {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+}
+
+.ad-add-product-container svg {
+    fill: var(--theme-color);
+    stroke: var(--theme-color);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+}
+
+.ad-add-product-container svg:hover {
+    cursor: pointer;
+    fill: var(--theme-color-lighter);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.45));
+    transition: .3s;
+}
+
+.ad-product-item {
+    position: relative;
+}
+
+.ad-product-item svg {
+    position:absolute;
+    right: -25px;
+    top: -15px;
+    /* right: -240px;
+    bottom: -25px; */
+    padding: 0px 6px;
+    fill: var(--remove-color);
+    stroke: var(--remove-color);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+}
+
+.ad-product-item svg:hover {
+    cursor: pointer;
+    fill: var(--remove-color-darker);
+    /* stroke: var(--remove-color-darker); */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.45));
+    transition: .3s;
+}
+
