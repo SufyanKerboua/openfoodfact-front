@@ -21,6 +21,7 @@ function Dashboard ({token, setToken}) {
           })
           .then(res => {
               console.log({'res /product :': res});
+              setToken(res.data.token);
               setProducts(res.data.products);
           }).catch(err => {
               alert('Couldn\'t fetch all products...');
@@ -39,7 +40,7 @@ function Dashboard ({token, setToken}) {
         fetchProductList();
         if (barCodeProduct === false)
             setBarCodeProduct(null);
-    }, [barCodeProduct]);
+    }, [barCodeProduct, profileView]);
 
     return (
         <div id='dashboard'>

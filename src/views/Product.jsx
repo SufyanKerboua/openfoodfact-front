@@ -63,21 +63,24 @@ function AdminPanel({token, barCodeProduct, setBarCodeProduct, isProductCreateVi
           }).catch(err => {
             setIsSpinning(false);
             setBarCodeProduct(false);
+            console.log({'err': err})
+            const errorCode = err.response.data.statusCode;
+            if (errorCode === 404)
+                alert('Le code barre du produit n\'est pas trouvable, veuillez en saisir un autre.');
+            else if (errorCode === 409)
+                alert('Le code barre du produit entré est déjà dans votre liste, veuillez en saisir un autre.');
         })
     }
 
     return !isPanelEditLoading ? (
         <div>
-        {/* <Backdrop className={classes.backdrop} open={true}> */}
         <Backdrop className={classes.backdrop} open={true} onClick={() => setBarCodeProduct(false)}>
         </Backdrop>
         {
             isProductCreateView ?
             <div id='product-card'>
                 <h2>Veuillez rentrer un code barre</h2>
-                <InputField style={{margin: '20px'}} field="Code barre" isPassWord={false} setData={setCode}/>
-                {/* <input type='text' name='code barre' required onChange={(e) => setCode(e.target.value)}/>
-                <label htmlFor='code barre'>code barre</label> */}
+                <InputField style={{margin: '20px'}} field="Code barre" isPassWord={false} setData={setCode} value={code} />
                 <button className='save-product' onClick={() => addProduct()}>Rajouter le produit</button>
             </div>
             :

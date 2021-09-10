@@ -15,8 +15,8 @@ function SignIn ({setDataForm}) {
 
     return (
         <div>
-            <InputField field="Nom d'utilisateur" isPassWord={false} setData={setUsername}/>
-            <InputField field="Mot de passe" isPassWord={true} setData={setPassword}/>
+            <InputField field="Nom d'utilisateur" isPassWord={false} setData={setUsername} value={username}/>
+            <InputField field="Mot de passe" isPassWord={true} setData={setPassword} value={password}/>
         </div>
     );
 }
@@ -36,9 +36,9 @@ function SignUp ({setDataForm}) {
 
     return (
         <div>
-            <InputField field="Nom d'utilisateur" isPassWord={false} setData={setUsername}/>
-            <InputField field="Mot de passe" isPassWord={true} setData={setPassword}/>
-            <InputField field="Veuillez répeter votre mot de passe" isPassWord={true} setData={setConfirmPassword}/>
+            <InputField field="Nom d'utilisateur" isPassWord={false} setData={setUsername} value={username} />
+            <InputField field="Mot de passe" isPassWord={true} setData={setPassword} value={password} />
+            <InputField field="Veuillez répeter votre mot de passe" isPassWord={true} setData={setConfirmPassword} value={confirmPassword} />
         </div>
     );
 }

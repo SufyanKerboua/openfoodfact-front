@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import InputField from '../components/InputField';
 import TextAreaField from '../components/TextAreaField';
-import Autocomplete from '../components/autocomplete/Autocomplete';
 
 import '../styles/ProfileSetting.css'
 
@@ -11,22 +10,45 @@ import { apiConfig } from '../config/apiConfig';
 
 function ProfileSetting ({token, setToken, setProfileView}) {
     const [user, setUser] = useState(null);
-    const [categories, setCategories] = useState(['aze', 'qsocq', 'dsqssq', 'okokok', 'cbncb']);
-    const [category, setCategory] = useState('');
     const [username, setUsername] = useState('');
     const [desc, setDesc] = useState('');
-    const [image, setImage] = useState(null);
 
     const updateUser = () => {
-        axios.patch(`${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/user`, {}, {
+        axios.patch(`${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/user`, { user }, {
             headers: { Authorization: `Bearer ${token}` },
-          })
-          .then(res => {
-              console.log({'res /product :': res});
-              setUser(res.data.user);
-          }).catch(err => {
-              alert('Couldn\'t fetch all products...');
-          })
+        })
+        .then(res => {
+            console.log({'res /product :': res});
+            setToken(res.data.token);
+            setUser(res.data.user);
+            setUsername(res.data.user.username);
+            setDesc(res.data.user.desc);
+        }).catch(err => {
+            alert('Couldn\'t update user...');
+        })
+    }
+
+    const deleteUser = () => {
+        axios.delete(`${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/user`, {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(res => {
+            setToken(false);
+        }).catch(err => {
+            alert('Couldn\'t delete user...');
+        })
+    }
+
+    const deleteProducts = () => {
+        axios.delete(`${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/product`, {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(res => {
+            setToken(res.data.token);
+            setProfileView(false);
+        }).catch(err => {
+            alert('Couldn\'t delete all products...');
+        })
     }
 
     useEffect(() => {
@@ -34,37 +56,20 @@ function ProfileSetting ({token, setToken, setProfileView}) {
     }, []);
 
     useEffect(() => {
-        if (user) {
-            setUsername(user.username);
-            setDesc(user.desc);
-            setImage(user.image);
-        }
-    }, [user]);
-
-    const filterSuggestions = value => {
-        return categories.filter(suggestion =>
-            suggestion.toLowerCase().indexOf(value.toLowerCase()) > -1
-        );
-    };
-    const displaySuggestionInList = suggestion => suggestion;
-    const displaySuggestionInInput = suggestion => suggestion;
-    const getCurrentSuggestion = suggestion => setCategory(suggestion);
+        setUser({
+            'username': username,
+            'desc': desc,
+        })
+    }, [username, desc]);
 
     return user ? (
         <div id='profile-settings'>
             <h2>Profil</h2>
-            <InputField field="Username" isPassWord={false} setData={setUsername} value={user.username}/>
-            <TextAreaField field="Description" setData={setDesc} value={user.desc}/>
-            <img src={image} alt={username} />
-            <Autocomplete
-                placeHolder='Donnée'
-                suggestions={categories}
-                filterSuggestions={filterSuggestions}
-                displaySuggestionInList={displaySuggestionInList}
-                displaySuggestionInInput={displaySuggestionInInput}
-                getCurrentSuggestion={getCurrentSuggestion}
-            />
+            <InputField field="Username" isPassWord={false} setData={setUsername} value={username}/>
+            <TextAreaField field="Description" setData={setDesc} value={desc}/>
             <button className='update-btn' onClick={() => updateUser()}>Mettre à jour</button>
+            <button className='delete-btn' onClick={() => deleteUser()}>Supprimer votre compte</button>
+            <button className='delete-btn' onClick={() => deleteProducts()}>Supprimer tout vos produits</button>
         </div>
     ) : (
         <div>Nothing</div>
