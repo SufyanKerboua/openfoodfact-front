@@ -1,77 +1,50 @@
 # openfoodfact-front
+Création d'une web application permettant de communiquer avec l'API Openfoodfact-API
 
+## Description
+Développer une application en mode webApp permettant à un utilisateur de se connecter, ainsi que de rajouter/supprimer de produits le tout via leurs codes barres.
 
-## Dépendences
-Axios
-material-ui/core
+`Les informations concerant ces produits sont généré via l'API OpenFoodFact`
 
-# Getting Started with Create React App
+L'application comporte 3 pages principales.
+- La première permet à un utilisateur de se créer/connecter via un nom d'utilisateur ainsi que d'un mot de passe.
+- La seconde page, permet à un utilisateur connecté de consulter un dashboard de tout les produits que celui-ci à deja pu consulter. Avec la possibilité de rajouter un produit via un code barre.
+- Enfin la dernière, permet à l'utilisateur de modifier les informations de son profil, de supprimer son compte, ou encore de supprimer tous les produits consultés.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Language de programmation
 
-## Available Scripts
+Utilisation d'un framework JS, `ReactJS`.
 
-In the project directory, you can run:
+### Dépendences
+- Axios
+- material-ui/core
+- material-ui/icons
+
+## Installation
+
+```bash
+$ npm install
+# installation des packets manquants
+```
+
+A noter que toutes les configurations concernant l'API permettant de communiquer avec la webApp sont situées dans le fichier **src/config/apiConfig.js**.
+
+## Scripts disponibles
+
+Dans le dossier du projet, vous pouvez lancer:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lancant l'application en mode développement.\
+Ouvrez [http://localhost:3000](http://localhost:3000) pour lancer l'application sur votre navigateur.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Construit l'application pour la production dans le dossier `build`.\
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+La compilation est minifiée et les noms de fichiers incluent les hachages.\
+Votre application est prête à être déployée!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Auteur
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Sufyan Kerboua
