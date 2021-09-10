@@ -31,15 +31,12 @@ function Form ({setToken}) {
         // setIsSpinning(true);
         const dataUser = checkUserData(dataForm);
         const url = `${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/user`;
-        console.log({'dataUser': dataUser});
         if (dataUser !== undefined && dataForm.confirPassword === undefined) {
             axios.get(url, { params: {...dataUser} })
             .then(res => {
               setIsSpinning(false);
-              console.log(res);
               setToken(res.data.token);
             }).catch(err => {
-              // Todo Error handle
               setIsSpinning(false);
               alert('Invalid Login or Password');
             })
@@ -47,10 +44,8 @@ function Form ({setToken}) {
             axios.post(url, dataUser)
             .then(res => {
               setIsSpinning(false);
-              console.log(res);
               setToken(res.data.token);
             }).catch(err => {
-              // Todo Error handle
               setIsSpinning(false);
               alert('Invalid Login or Password');
             })

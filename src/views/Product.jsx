@@ -26,9 +26,7 @@ function AdminPanel({token, barCodeProduct, setBarCodeProduct, isProductCreateVi
     const url = `${apiConfig.protocol}://${apiConfig.baseUrl}:${apiConfig.port}/product/`;
 
     useEffect(() => {
-        console.log({'Create View state': isProductCreateView});
         if (!isProductCreateView) {
-            console.log('here');
             setIsPanelEditLoading(true);
             setIsSpinning(true);
             fetchProduct();
@@ -36,13 +34,11 @@ function AdminPanel({token, barCodeProduct, setBarCodeProduct, isProductCreateVi
     }, []);
 
     const fetchProduct = () => {
-        console.log({'Bar code in fetch': barCodeProduct});
         axios.get(`${url}${barCodeProduct}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then(res => {              
             setIsSpinning(false);
-            console.log({res: res});
             setProduct(res.data.product);
             setIsPanelEditLoading(false);
           }).catch(err => {
@@ -51,19 +47,16 @@ function AdminPanel({token, barCodeProduct, setBarCodeProduct, isProductCreateVi
     }
 
     const addProduct = () => {
-        console.log({'Bar code to Add POST fetch': code});
         axios.post(`${url}${code}`, {}, {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then(res => {              
             setIsSpinning(false);
-            console.log({res: res});
             setBarCodeProduct(false);
             setIsPanelEditLoading(false);
           }).catch(err => {
             setIsSpinning(false);
             setBarCodeProduct(false);
-            console.log({'err': err})
             const errorCode = err.response.data.statusCode;
             if (errorCode === 404)
                 alert('Le code barre du produit n\'est pas trouvable, veuillez en saisir un autre.');

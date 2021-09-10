@@ -18,7 +18,6 @@ function ProfileSetting ({token, setToken, setProfileView}) {
             headers: { Authorization: `Bearer ${token}` },
         })
         .then(res => {
-            console.log({'res /product :': res});
             setToken(res.data.token);
             setUser(res.data.user);
             setUsername(res.data.user.username);

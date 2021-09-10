@@ -20,7 +20,6 @@ function Dashboard ({token, setToken}) {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then(res => {
-              console.log({'res /product :': res});
               setToken(res.data.token);
               setProducts(res.data.products);
           }).catch(err => {
@@ -31,10 +30,6 @@ function Dashboard ({token, setToken}) {
     useEffect(() => {
         fetchProductList();
     }, []);
-
-    useEffect(() => {
-        console.log({'Bar code': barCodeProduct});
-    }, [barCodeProduct]);
 
     useEffect(() => {
         fetchProductList();
