@@ -45,6 +45,9 @@ Construit l'application pour la production dans le dossier `build`.\
 La compilation est minifiée et les noms de fichiers incluent les hachages.\
 Votre application est prête à être déployée!
 
+## Demo
+
+[![Watch the video](https://img.youtube.com/vi/5ZX718JnuoA/maxresdefault.jpg)](https://youtu.be/5ZX718JnuoA) 
 ## Auteur
 
 - Sufyan Kerboua
